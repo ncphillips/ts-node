@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import {stringify} from "querystring";
+import BlogPost = require("../blog/BlogPost");
 /**
  * Module dependencies.
  */
@@ -13,7 +13,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = require('../lib/normalizePort')(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
@@ -29,26 +29,6 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-
-/**
- * Normalize a port into a number, string, or false.
- */
-
-function normalizePort(val: string): string|number|boolean {
-  var port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
-  return false;
-}
 
 /**
  * Event listener for HTTP server "error" event.
@@ -89,3 +69,11 @@ function onListening() {
     : 'port ' + addr.port;
   console.log('Listening on ' + bind);
 }
+
+var Injector = require("../Injector");
+var injector = new Injector();
+var BPC = injector.getInstance("BlogPostCollection");
+var collection = new BPC();
+collection.save(new BlogPost("The Beginning", "Test"), function () {
+  console.log("Saving finished");
+});
