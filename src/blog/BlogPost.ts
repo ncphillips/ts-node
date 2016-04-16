@@ -1,4 +1,5 @@
 class BlogPost {
+  public id: number;
   public title: string;
   public body: string;
 
