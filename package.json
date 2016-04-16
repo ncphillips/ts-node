@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "prestart": "tsc",
+    "prestart": "rm -rf out && tsc",
     "start": "node out/bin/start.js"
   },
   "dependencies": {
