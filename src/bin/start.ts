@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import BlogPost = require("../blog/BlogPost");
+import {BlogPostCollection} from "../blog/BlogPostCollection";
 /**
  * Module dependencies.
  */
@@ -72,8 +73,19 @@ function onListening() {
 
 var Injector = require("../Injector");
 var injector = new Injector();
-var BPC = injector.getInstance("BlogPostCollection");
-var collection = new BPC();
-collection.save(new BlogPost("The Beginning", "Test"), function () {
-  console.log("Saving finished");
+var collection: BlogPostCollection = injector.getInstance("BlogPostCollection");
+collection.save(new BlogPost("The Beginning", "Test"), function (err: Error, post: BlogPost) {
+  if (err) {
+    console.log("Something went wrong!", err);
+  } else {
+    console.log("Post Saved: ", post);
+
+    collection.findById(post.id, function(err: Error, post: BlogPost) {
+      if (err) {
+        console.log("Liar!");
+      } else {
+        console.log("It really was saved", post);
+      }
+    });
+  }
 });
