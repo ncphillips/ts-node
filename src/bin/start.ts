@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import {stringify} from "querystring";
 /**
  * Module dependencies.
  */
@@ -33,7 +34,7 @@ server.on('listening', onListening);
  * Normalize a port into a number, string, or false.
  */
 
-function normalizePort(val) {
+function normalizePort(val: string): string|number|boolean {
   var port = parseInt(val, 10);
 
   if (isNaN(port)) {
@@ -53,7 +54,7 @@ function normalizePort(val) {
  * Event listener for HTTP server "error" event.
  */
 
-function onError(error) {
+function onError(error: any) {
   if (error.syscall !== 'listen') {
     throw error;
   }
@@ -86,5 +87,5 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+  console.log('Listening on ' + bind);
 }

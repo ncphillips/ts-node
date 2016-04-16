@@ -1,3 +1,6 @@
+import {Request} from "express";
+import {Response} from "express";
+import {NextFunction} from "express";
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -26,7 +29,7 @@ app.use('/', routes);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function(req: Request, res: Response, next: NextFunction) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
@@ -37,7 +40,7 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
+  app.use(function(err: any, req: Request, res: Response, next: NextFunction) {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
@@ -48,7 +51,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use(function(err: any, req: Request, res: Response, next: NextFunction) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
