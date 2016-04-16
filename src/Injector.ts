@@ -1,11 +1,9 @@
+var config = require('./config');
 class Injector {
   private mapping: {[key:string]:string};
 
   constructor() {
-    // Todo: load from config
-    this.mapping = {
-      "BlogPostCollection": __dirname + "/lib/collections/MemoryBlogPostCollection"
-    };
+    this.mapping = config.dependencyMappings || {};
   }
 
   public getInstance(i: string): any {
