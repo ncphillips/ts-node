@@ -39,7 +39,7 @@ declare module "express-serve-static-core" {
         /**
             * Map the given param placeholder `name`(s) to the given callback(s).
             *
-            * Parameter mapping is used to provide pre-conditions to routes
+            * Parameter mapping is used to provide pre-conditions to main
             * which use normalized placeholders. For example a _:user_id_ parameter
             * could automatically load a user's information from the database without
             * any additional code,
