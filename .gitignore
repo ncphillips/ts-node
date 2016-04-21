@@ -1,14 +1,14 @@
 # Ember Ignore
-tymber-client/dist/
-tymber-client/tmp/
-tymber-client/node_modules/
-tymber-client/bower_components/
-tymber-client/.sass-cache
-tymber-client/connect.lock
-tymber-client/coverage/
-tymber-client/libpeerconnection.log
-tymber-client/npm-debug.log
-tymber-client/testem.log
+tymber-client2/dist/
+tymber-client2/tmp/
+tymber-client2/node_modules/
+tymber-client2/bower_components/
+tymber-client2/.sass-cache
+tymber-client2/connect.lock
+tymber-client2/coverage/
+tymber-client2/libpeerconnection.log
+tymber-client2/npm-debug.log
+tymber-client2/testem.log
 
 .idea
 public/
