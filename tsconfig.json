@@ -6,11 +6,13 @@
     "preserveConstEnums": true,
     "target": "es5",
     "sourceMap": true,
-    "rootDir": "src",
+    "rootDir": "tymber-server",
     "allowJs": true,
     "outDir": "out"
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "tymber-client",
+    "public"
   ]
 }
